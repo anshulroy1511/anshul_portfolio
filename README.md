@@ -1,4 +1,4 @@
-# Deepak Jangra - Portfolio
+# Anshul - Portfolio
 
 Modern portfolio website built with Next.js 15, showcasing professional experience and projects with enterprise-grade performance and SEO.
 
@@ -139,14 +139,3 @@ Optimized for deployment on:
 - **Netlify**
 - **Railway**
 - Any Node.js hosting platform
-
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
-## Contact
-
-- **Website**: [deepakjangra.com](https://deepakjangra.com)
-- **GitHub**: [@heydeepakjangra](https://github.com/heydeepakjangra)
-- **LinkedIn**: [@heydeepakjangra](https://linkedin.com/in/heydeepakjangra)
-- **Twitter**: [@heydeepakjangra](https://x.com/heydeepakjangra) 
