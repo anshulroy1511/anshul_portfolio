@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { FaAws, FaRobot } from "react-icons/fa";
 import {
-  SiCss,
+  SiCss3,
   SiDocker,
   SiGit,
   SiShadcnui,
