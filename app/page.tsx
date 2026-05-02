@@ -17,7 +17,6 @@ import {
 export default function Page() {
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
-      {/* biome-ignore lint/nursery/useUniqueElementIds: Navigation section requires static ID */}
       <section id="hero" aria-labelledby="hero-heading">
         <div className="mx-auto w-full max-w-4xl space-y-8">
           <div className="flex flex-col-reverse gap-4 sm:flex-row sm:justify-between sm:gap-2">
@@ -43,7 +42,6 @@ export default function Page() {
           </div>
         </div>
       </section>
-      {/* biome-ignore lint/nursery/useUniqueElementIds: Navigation section requires static ID */}
       <section id="about">
         <BlurFade delay={ANIMATION_CONFIG.blurFadeDelay * 3}>
           <h2 className="text-xl font-bold">
@@ -56,7 +54,6 @@ export default function Page() {
           </div>
         </BlurFade>
       </section>
-      {/* biome-ignore lint/nursery/useUniqueElementIds: Navigation section requires static ID */}
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={ANIMATION_CONFIG.blurFadeDelay * 5}>
@@ -84,7 +81,6 @@ export default function Page() {
           ))}
         </div>
       </section>
-      {/* biome-ignore lint/nursery/useUniqueElementIds: Navigation section requires static ID */}
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={ANIMATION_CONFIG.blurFadeDelay * 7}>
@@ -110,7 +106,6 @@ export default function Page() {
           ))}
         </div>
       </section>
-      {/* biome-ignore lint/nursery/useUniqueElementIds: Navigation section requires static ID */}
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={ANIMATION_CONFIG.blurFadeDelay * 9}>
@@ -148,7 +143,6 @@ export default function Page() {
           </div>
         </div>
       </section>
-      {/* biome-ignore lint/nursery/useUniqueElementIds: Navigation section requires static ID */}
       <section id="projects">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={ANIMATION_CONFIG.blurFadeDelay * 11}>
@@ -189,7 +183,6 @@ export default function Page() {
           </div>
         </div>
       </section>
-      {/* biome-ignore lint/nursery/useUniqueElementIds: Navigation section requires static ID */}
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={ANIMATION_CONFIG.blurFadeDelay * 16}>

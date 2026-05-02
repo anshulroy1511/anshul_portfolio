@@ -5,16 +5,24 @@ import { Separator } from "@/components/ui/separator";
 import { ANIMATION_CONFIG, formatDate, UI_TEXT } from "@/data/site-config";
 import { source } from "@/lib/source";
 
+interface PostData {
+  title: string;
+  description?: string;
+  date?: Date | string;
+}
+
 export default function BlogsPage() {
   const posts = source
     .getPages()
+    .map((post) => ({ post, data: post.data as unknown as PostData }))
     .sort(
       (a, b) =>
-        new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+        new Date(b.data.date ?? 0).getTime() -
+        new Date(a.data.date ?? 0).getTime()
     );
 
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-8">
+    <main className="flex flex-col min-h-dvh space-y-8">
       <section>
         <div className="mx-auto w-full max-w-4xl space-y-10">
           <BlurFade delay={ANIMATION_CONFIG.blurFadeDelay}>
@@ -30,8 +38,8 @@ export default function BlogsPage() {
 
           <div className="mx-auto w-full max-w-4xl space-y-4">
             {posts.length > 0 ? (
-              posts.map((post, id) => {
-                const formattedDate = formatDate(post.data.date);
+              posts.map(({ post, data }, id) => {
+                const formattedDate = data.date ? formatDate(data.date) : "";
 
                 return (
                   <BlurFade
@@ -47,10 +55,10 @@ export default function BlogsPage() {
 
                           <div className="space-y-1">
                             <h2 className="text-xl font-semibold tracking-tight">
-                              {post.data.title}
+                              {data.title}
                             </h2>
                             <p className="text-muted-foreground line-clamp-2">
-                              {post.data.description}
+                              {data.description}
                             </p>
                           </div>
                         </div>

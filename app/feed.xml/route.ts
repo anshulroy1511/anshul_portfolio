@@ -1,6 +1,14 @@
 import { DATA } from "@/data/resume";
 import { source } from "@/lib/source";
 
+interface BlogFrontmatter {
+  title: string;
+  description?: string;
+  date?: Date | string;
+  author?: string;
+  tags?: string[];
+}
+
 // biome-ignore lint/style/useNamingConvention: Next.js API route handler must be named GET
 export async function GET() {
   const posts = source.getPages();
@@ -18,18 +26,19 @@ export async function GET() {
     <webMaster>${DATA.contact.email} (${DATA.name})</webMaster>
     <ttl>60</ttl>
     ${posts
-      .map(
-        (post) => `
+      .map((post) => {
+        const data = post.data as unknown as BlogFrontmatter;
+        return `
     <item>
-      <title><![CDATA[${post.data.title}]]></title>
-      <description><![CDATA[${post.data.description || ""}]]></description>
+      <title><![CDATA[${data.title}]]></title>
+      <description><![CDATA[${data.description || ""}]]></description>
       <link>${DATA.url}/blogs/${post.slugs.join("/")}</link>
       <guid isPermaLink="true">${DATA.url}/blogs/${post.slugs.join("/")}</guid>
-      <pubDate>${new Date(post.data.date || Date.now()).toUTCString()}</pubDate>
-      <author>${DATA.contact.email} (${post.data.author || DATA.name})</author>
-      ${post.data.tags ? post.data.tags.map((tag) => `<category>${tag}</category>`).join("\n      ") : ""}
-    </item>`
-      )
+      <pubDate>${new Date(data.date || Date.now()).toUTCString()}</pubDate>
+      <author>${DATA.contact.email} (${data.author || DATA.name})</author>
+      ${data.tags ? data.tags.map((tag) => `<category>${tag}</category>`).join("\n      ") : ""}
+    </item>`;
+      })
       .join("")}
   </channel>
 </rss>`;

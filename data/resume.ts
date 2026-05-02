@@ -1,31 +1,20 @@
 import {
-  Cloud,
   Code,
-  Database,
   HomeIcon,
   NotebookIcon,
-  Settings,
 } from "lucide-react";
-import { DiVisualstudio } from "react-icons/di";
 import { FaAws, FaRobot } from "react-icons/fa";
 import {
-  SiAmazondynamodb,
-  SiAngular,
-  SiBootstrap,
-  SiCss3,
+  SiCss,
   SiDocker,
-  SiDotnet,
-  SiDrizzle,
   SiGit,
   SiShadcnui,
   SiGreensock,
   SiGithub,
-  SiGo,
   SiGooglecloud,
   SiHtml5,
   SiJavascript,
   SiMysql,
-  SiNestjs,
   SiNextdotjs,
   SiNodedotjs,
   SiOpenai,
@@ -36,20 +25,14 @@ import {
   SiJira,
   SiOpenjdk,
   SiReact,
-  SiRedis,
-  SiSharp,
-  SiSocketdotio,
   SiSwagger,
   SiTailwindcss,
-  SiTerraform,
-  SiTypescript,
   SiFastapi,
   SiMongodb,
   SiNetlify,
   SiVercel,
 } from "react-icons/si";
 import { TbBrandVisualStudio } from "react-icons/tb";
-import { VscAzure, VscAzureDevops } from "react-icons/vsc";
 import { Icons } from "@/components/icons";
 import type { ResumeData } from "@/types";
 
@@ -90,7 +73,7 @@ export const DATA: ResumeData = {
         { title: "Next.js", icon: SiNextdotjs },
         { title: "React.js", icon: SiReact },
         { title: "HTML", icon: SiHtml5 },
-        { title: "CSS", icon: SiCss3 },
+        { title: "CSS", icon: SiCss },
         { title: "TailwindCSS", icon: SiTailwindcss },
         { title: "Shadcn", icon: SiShadcnui },
         { title: "GSAP", icon: SiGreensock },

@@ -26,18 +26,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // Generate structured data
+  const { title, description, date, author } = page.data as unknown as {
+    title: string;
+    description?: string;
+    date?: Date | string;
+    author?: string;
+    tags?: string[];
+  };
+
   const blogPostSchema = generateBlogPostSchema(
-    page.data.title,
-    page.data.description || page.data.title,
-    page.data.date.toISOString(),
+    title,
+    description || title,
+    date instanceof Date ? date.toISOString() : String(date ?? ""),
     slug
   );
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: DATA.url },
     { name: "Blogs", url: `${DATA.url}/blogs` },
-    { name: page.data.title, url: `${DATA.url}/blogs/${slug}` },
+    { name: title, url: `${DATA.url}/blogs/${slug}` },
   ]);
 
   return (
@@ -58,7 +65,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         }}
       />
 
-      <main className="flex flex-col min-h-[100dvh] space-y-10">
+      <main className="flex flex-col min-h-dvh space-y-10">
         <section>
           <div className="mx-auto w-full max-w-4xl space-y-6">
             <BlurFade delay={ANIMATION_CONFIG.blurFadeDelay}>
@@ -74,20 +81,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <BlurFade delay={ANIMATION_CONFIG.blurFadeDelay * 2}>
               <div className="text-center space-y-4">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  {page.data.title}
+                  {title}
                 </h1>
-                {page.data.description && (
-                  <p className="text-muted-foreground text-lg">
-                    {page.data.description}
-                  </p>
+                {description && (
+                  <p className="text-muted-foreground text-lg">{description}</p>
                 )}
                 <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
-                  {page.data.author && (
+                  {author && (
                     <span>
-                      {UI_TEXT.pages.blogs.byText} {page.data.author}
+                      {UI_TEXT.pages.blogs.byText} {author}
                     </span>
                   )}
-                  {page.data.date && <span>{formatDate(page.data.date)}</span>}
+                  {date && <span>{formatDate(date)}</span>}
                 </div>
               </div>
             </BlurFade>
@@ -112,14 +117,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   );
 }
 
-// Generate static params for all blog posts
 export async function generateStaticParams() {
   return source.getPages().map((page) => ({
     slug: page.slugs[0],
   }));
 }
 
-// Generate metadata for SEO
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const { slug } = await params;
   const page = source.getPage([slug]);
@@ -128,25 +131,33 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     return {};
   }
 
-  const keywords = page.data.tags
-    ? page.data.tags.join(", ")
+  const { title, description, date, author, tags } = page.data as unknown as {
+    title: string;
+    description?: string;
+    date?: Date | string;
+    author?: string;
+    tags?: string[];
+  };
+
+  const keywords = tags
+    ? tags.join(", ")
     : "blog, programming, software engineering";
 
   return {
-    title: page.data.title,
-    description: page.data.description,
-    keywords: keywords,
-    authors: page.data.author ? [{ name: page.data.author }] : undefined,
+    title,
+    description,
+    keywords,
+    authors: author ? [{ name: author }] : undefined,
     category: "Technology",
     alternates: {
       canonical: `${DATA.url}/blogs/${slug}`,
     },
     openGraph: {
-      title: page.data.title,
-      description: page.data.description,
+      title,
+      description,
       type: "article",
-      publishedTime: page.data.date,
-      authors: page.data.author ? [page.data.author] : undefined,
+      publishedTime: date,
+      authors: author ? [author] : undefined,
       url: `${DATA.url}/blogs/${slug}`,
       siteName: `${DATA.name} Blog`,
       images: [
@@ -154,14 +165,14 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
           url: `${DATA.url}/og-default.png`,
           width: 1200,
           height: 630,
-          alt: `${DATA.name} - ${page.data.title}`,
+          alt: `${DATA.name} - ${title}`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: page.data.title,
-      description: page.data.description,
+      title,
+      description,
       images: [`${DATA.url}/og-default.png`],
     },
     robots: {

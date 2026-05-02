@@ -5,15 +5,15 @@ import { source } from "@/lib/source";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = DATA.url;
 
-  // Get all blog posts
   const blogPosts = source.getPages().map((post) => ({
     url: `${baseUrl}/blogs/${post.slugs.join("/")}`,
-    lastModified: new Date(post.data.date || Date.now()),
+    lastModified: new Date(
+      (post.data as unknown as { date?: Date | string }).date ?? Date.now()
+    ),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
 
-  // Static pages
   const staticPages = [
     {
       url: baseUrl,
