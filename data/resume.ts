@@ -73,7 +73,7 @@ export const DATA: ResumeData = {
         { title: "Next.js", icon: SiNextdotjs },
         { title: "React.js", icon: SiReact },
         { title: "HTML", icon: SiHtml5 },
-        { title: "CSS", icon: SiCss },
+        { title: "CSS", icon: SiCss3 },
         { title: "TailwindCSS", icon: SiTailwindcss },
         { title: "Shadcn", icon: SiShadcnui },
         { title: "GSAP", icon: SiGreensock },
