@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { FaAws, FaRobot } from "react-icons/fa";
 import {
-  SiCss3,
+  SiCss,
   SiDocker,
   SiGit,
   SiShadcnui,
@@ -73,7 +73,7 @@ export const DATA: ResumeData = {
         { title: "Next.js", icon: SiNextdotjs },
         { title: "React.js", icon: SiReact },
         { title: "HTML", icon: SiHtml5 },
-        { title: "CSS", icon: SiCss3 },
+        { title: "CSS", icon: SiCss },
         { title: "TailwindCSS", icon: SiTailwindcss },
         { title: "Shadcn", icon: SiShadcnui },
         { title: "GSAP", icon: SiGreensock },
