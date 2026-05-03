@@ -305,7 +305,39 @@ export const DATA: ResumeData = {
       ],
       image: "/pocket.png",
       video: "",
+    },{
+  title: "AI Travel Planner",
+  href: "https://aitrip-planner-frontend.onrender.com/",
+  dates: "Mar 2025",
+  status: "active",
+  description:
+    "An intelligent multi-user AI travel planner that generates personalized day-by-day itineraries using GPT-4o Mini. Users can create, manage, and customize trips, regenerate specific days, and receive smart travel alerts. The platform also enhances travel experience with curated destination images from Unsplash and a full dashboard for managing multiple trips.",
+  technologies: [
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "OpenAI API",
+    "Unsplash API",
+    "JWT",
+    "bcrypt"
+  ],
+  links: [
+    {
+      type: "Website",
+      href: "https://aitrip-planner-frontend.onrender.com/",
+      icon: Icons.globe,
     },
+    {
+      type: "Source",
+      href: "https://github.com/anshulroy1511/AItrip_planner",
+      icon: Icons.github,
+    }
+  ],
+  image: "/pocket.png",
+  video: "https://www.loom.com/share/50d187df4c424274ab154ca556cdb6db" 
+},
    {
     title: "BidVerse — Auction Platform",
     href: "#",
