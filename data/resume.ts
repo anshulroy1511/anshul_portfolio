@@ -280,7 +280,7 @@ export const DATA: ResumeData = {
       dates: "Mar 2025",
       status: "active",
       description:
-        "An AI-powered personal finance tracker that helps users manage expenses, analyze spending patterns, receive smart financial insights, and get real-time alerts for better financial decisions.",
+          "An AI-powered personal finance tracker that helps users manage expenses, analyze spending patterns, receive smart financial insights, and get real-time alerts for better financial decisions. It also visualizes spending behavior through intelligent categorization and trends. Users can track monthly budgets and identify unnecessary expenses to improve savings efficiency.",
       technologies: [
         "Next.js",
         "TypeScript",
